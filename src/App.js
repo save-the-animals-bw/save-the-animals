@@ -34,14 +34,14 @@ function App() {
       <Route path='/org-login' render={props => <OrgLogin {...props} setUserType={setUserType} />} />
       <Route path='/supporter-login' render={props => <SupporterLogin {...props} setUserType={setUserType} />} />
       {/* SUPPORTER PRIVATE ROUTES */}
-      <PrivateRoute path='/supporter-campaigns' render={props => <SupporterLanding {...props} userType={userType} />} />
-      <PrivateRoute path='/supporter-campaigns/:id' render={(props) => <SupportCampaign {...props} userType={userType} />} />
-      <PrivateRoute path='/supporter-campaigns/:id/donate' render={(props) => <Donate {...props} userType={userType} />} />
+      <PrivateRoute path='/supporter-campaigns' component={SupporterLanding} />
+      <PrivateRoute path='/supporter-campaigns/:id' component={SupportCampaign} />
+      <PrivateRoute path='/supporter-campaigns/:id/donate' component={Donate}  />
       {/* ORGANIZATION PRIVATE ROUTES*/}
-      <PrivateRoute path='/org-campaigns' render={props => <OrgLanding {...props} userType={userType} />} />
-      <PrivateRoute path='/add-campaign' render={props => <AddCampaign {...props} userType={userType} />} />
-      <PrivateRoute path='/org-campaigns/:id' render={props => <Campaign {...props} userType={userType} />} />
-      <PrivateRoute path='/org-campaigns/:id/edit' render={props => <EditCampaign {...props} userType={userType} />} />
+      <PrivateRoute path='/org-campaigns' component={OrgLanding} />
+      <PrivateRoute path='/add-campaign' component={AddCampaign} />
+      <PrivateRoute path='/org-campaigns/:id' component={Campaign} />
+      <PrivateRoute path='/org-campaigns/:id/edit' component={EditCampaign} />
     </div>
   );
 }

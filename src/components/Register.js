@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios'
+import '../css/Register.css'
 
 const initialUser = {
     username: '',
     password: '',
     email: '',
-    userType: 'organization',
+    userType: '',
 }
 
-const Register = () => {
+const Register = (props) => {
   const [user, setUser] = useState(initialUser);
   const [orgList, setOrgList] = useState([])
 
@@ -32,31 +33,32 @@ const Register = () => {
       axios
       .post('https://saving-the-animals.herokuapp.com/api/auth/register', user.userType === 'organization' ? {...user, organization_id: Date.now()} : user)
       .then(res => {
-          console.log(res)
+          {user.userType === 'organization' ? props.history.push('/org-login') : props.history.push('/supporter-login')}
       })
       .catch(err => console.log(err))
   }
 
   return (
-    <div className='content'>
-      <div className='form-container'>
+    <div className='register-content'>
+      <div className='register-form-container'>
         <form onSubmit={handleSubmit}>
+        <h3>Register Account</h3>
           <label htmlFor="username">
-            Username:
+            Username
             <input type="text" name="username" onChange={handleChanges} />
           </label>
           <label htmlFor="password">
-            Password:
+            Password
             <input type="password" name="password" onChange={handleChanges} />
           </label>
           <label htmlFor='email'>
-            Email:
+            Email
             <input type='text' name='email' onChange={handleChanges} />
           </label>
           <div>
             <label htmlFor="userType">
-              Are you an Organization or a Supporter?
-              <input type="radio" name="userType" value="organization" checked  onChange={handleChanges}/>
+              Are you an Organization or a Supporter?<br />
+              <input type="radio" name="userType" value="organization" onChange={handleChanges}/>
               Organization
               <input type="radio" name="userType" value="support" onChange={handleChanges} />
               Supporter
@@ -64,8 +66,9 @@ const Register = () => {
           </div>
           {user.userType === 'organization' && (
             <div>
-              <select name='organization'>
-                {orgList.map(item => <option key={item.id} value={item.organ_name}>{item.organ_name}</option>)}
+            <label htmlFor='organization_id'>Select your organization: <br /></label>
+              <select name='organization_id' onChange={handleChanges}>
+                {orgList.map(item => <option key={item.id} value={item.id}>{item.organ_name}</option>)}
               </select>
             </div>
           )}

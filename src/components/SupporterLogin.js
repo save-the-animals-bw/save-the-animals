@@ -19,12 +19,12 @@ function SupporterLogin(props) {
 
     const handleSubmit = e => {
         e.preventDefault()
-        axios.post('BACKEND ADDRESS ENDPOINT HERE', user)
+        axios.post('https://saving-the-animals.herokuapp.com/api/auth/login', user)
         .then(res => {
             console.log(res)
             setUser(initialUser)
             localStorage.setItem('token', res.data.token)
-            props.history.push('/supporter-landing')
+            props.history.push('/supporter-campaigns')
         })
         .catch(err => console.log(err))
     }
@@ -33,8 +33,9 @@ function SupporterLogin(props) {
         <div className="content">
             <div className="form-container">
                 <form onSubmit={handleSubmit}>
+                <h3>Supporter Login</h3>
                 <label htmlFor="username" name="username">
-                    Username:
+                    Username
                     <input
                     name="username"
                     htmlFor="username"
@@ -43,7 +44,7 @@ function SupporterLogin(props) {
                     />
                 </label>
                 <label htmlFor="password" name="password">
-                    Password:
+                    Password
                     <input
                     name="password"
                     htmlFor="password"

@@ -21,7 +21,7 @@ function OrgLogin(props) {
   const handleSubmit = e => {
     e.preventDefault();
     axios
-      .post("BACKEND ADDRESS ENDPOINT HERE", user)
+      .post("https://saving-the-animals.herokuapp.com/api/auth/login", user)
       .then(res => {
         console.log(res);
         setUser(initialUser);
@@ -35,8 +35,9 @@ function OrgLogin(props) {
     <div className="content">
       <div className="form-container">
         <form onSubmit={handleSubmit}>
+        <h3>Organization Login</h3>
           <label htmlFor="username" name="username">
-            Username:
+            Username
             <input
               name="username"
               htmlFor="username"
@@ -45,7 +46,7 @@ function OrgLogin(props) {
             />
           </label>
           <label htmlFor="password" name="password">
-            Password:
+            Password
             <input
               name="password"
               htmlFor="password"
