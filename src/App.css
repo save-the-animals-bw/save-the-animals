@@ -20,3 +20,51 @@
 .App-link {
   color: #09d3ac;
 }
+
+.nav-bar{
+  height: 60px;
+  background-color: rgba(0, 0, 0, 0.8);
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-bar h1{
+  font-size: calc(0.8em + 1.2vmin);
+}
+
+.logo-image{
+  height: 50px;
+  padding-left: 20px;
+}
+
+.logo-container{
+  display:flex;
+  align-items:center;
+}
+
+.logo-container h1{
+  color: #FFD700;
+  padding-left: 20px;
+  font-family: 'Varela Round', sans-serif;
+}
+
+.links{
+  display:flex;
+  align-items:center;
+  justify-content: space-around;
+}
+
+.nav-link{
+  color: #FFD700;
+  text-decoration: none;
+  font-family: 'Varela Round', sans-serif;
+  padding: 0 20px;
+  font-size: calc(0.6em + 1vmin);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #FFD700;
+  font-family: 'Varela Round', sans-serif;
+}
+
