@@ -34,11 +34,11 @@ function App() {
       <Route path='/org-login' render={props => <OrgLogin {...props} setUserType={setUserType} />} />
       <Route path='/supporter-login' render={props => <SupporterLogin {...props} setUserType={setUserType} />} />
       {/* SUPPORTER PRIVATE ROUTES */}
-      <PrivateRoute path='/supporter-campaigns' component={SupporterLanding} />
+      <PrivateRoute exact path='/supporter-campaigns' component={SupporterLanding} />
       <PrivateRoute path='/supporter-campaigns/:id' component={SupportCampaign} />
       <PrivateRoute path='/supporter-campaigns/:id/donate' component={Donate}  />
       {/* ORGANIZATION PRIVATE ROUTES*/}
-      <PrivateRoute path='/org-campaigns' component={OrgLanding} />
+      <PrivateRoute exact path='/org-campaigns' component={OrgLanding} />
       <PrivateRoute path='/add-campaign' component={AddCampaign} />
       <PrivateRoute path='/org-campaigns/:id' component={Campaign} />
       <PrivateRoute path='/org-campaigns/:id/edit' component={EditCampaign} />

@@ -29,6 +29,10 @@
   align-items: center;
 }
 
+.nav-bar h1{
+  font-size: calc(0.8em + 1.2vmin);
+}
+
 .logo-image{
   height: 50px;
   padding-left: 20px;
@@ -56,6 +60,7 @@
   text-decoration: none;
   font-family: 'Varela Round', sans-serif;
   padding: 0 20px;
+  font-size: calc(0.6em + 1vmin);
 }
 
 h1, h2, h3, h4, h5, h6 {

@@ -65,3 +65,11 @@ Form label{
 Form input{
     margin: 4%;
 }
+
+
+@media all and (max-width: 1000px) {
+    .content::after{
+        background: url('../images/rhino_small.jpg') no-repeat;
+        background-size: cover;
+    }
+}

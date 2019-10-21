@@ -1,0 +1,32 @@
+.landing-container{
+    display:flex;
+    align-items:center;
+    height: 80vh;
+}
+.landing-container::after{
+    content:'';
+    background: url("../images/elephant.jpg") no-repeat;
+    background-size: cover;
+    opacity: 0.8;
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    z-index: -1;
+}
+
+.landing-content {
+    margin: 0 auto;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+}
+
+
+@media all and (max-width: 1000px) {
+    .landing-container::after{
+        background: url('../images/elephant_small.jpg') no-repeat;
+        background-size: cover;
+    }
+}

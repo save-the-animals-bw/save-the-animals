@@ -65,3 +65,10 @@ Form label{
 Form input{
     margin: 4%;
 }
+
+@media all and (max-width: 1000px) {
+    .register-content::after{
+        background: url('../images/zebra_small.jpg') no-repeat;
+        background-size: cover;
+    }
+}
