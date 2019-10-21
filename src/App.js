@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import { Route, Link } from 'react-router-dom'
 import PrivateRoute from './utils/PrivateRoute'
@@ -25,22 +25,23 @@ import EditCampaign from './components/Organizations/EditCampaign'
 
 
 function App() {
+  const [userType, setUserType] = useState()
   return (
     <div className="App">
       <NavBar />
-      <Route exact path='/' component={Landing} />
-      <Route path='/register' component={Register} />
-      <Route path='/org-login' component={OrgLogin} />
-      <Route path='/supporter-login' component={SupporterLogin} />
+      <Route exact path='/' component={Landing} userType={userType} />
+      <Route path='/register' component={Register} userType={userType} />
+      <Route path='/org-login' render={props => <OrgLogin {...props} setUserType={setUserType} />} />
+      <Route path='/supporter-login' render={props => <SupporterLogin {...props} setUserType={setUserType} />} />
       {/* SUPPORTER PRIVATE ROUTES */}
-      <PrivateRoute path='/supporter-campaigns' component={SupporterLanding} />
-      <PrivateRoute path='/supporter-campaigns/:id' render={(props) => <SupportCampaign {...props} />} />
-      <PrivateRoute path='/supporter-campaigns/:id/donate' render={(props) => <Donate {...props} />} />
+      <PrivateRoute path='/supporter-campaigns' render={props => <SupporterLanding {...props} userType={userType} />} />
+      <PrivateRoute path='/supporter-campaigns/:id' render={(props) => <SupportCampaign {...props} userType={userType} />} />
+      <PrivateRoute path='/supporter-campaigns/:id/donate' render={(props) => <Donate {...props} userType={userType} />} />
       {/* ORGANIZATION PRIVATE ROUTES*/}
-      <PrivateRoute path='/org-campaigns' component={OrgLanding} />
-      <PrivateRoute path='/add-campaign' component={AddCampaign} />
-      <PrivateRoute path='/org-campaigns/:id' render={props => <Campaign {...props} />} />
-      <PrivateRoute path='/org-campaigns/:id/edit' render={props => <EditCampaign {...props} />} />
+      <PrivateRoute path='/org-campaigns' render={props => <OrgLanding {...props} userType={userType} />} />
+      <PrivateRoute path='/add-campaign' render={props => <AddCampaign {...props} userType={userType} />} />
+      <PrivateRoute path='/org-campaigns/:id' render={props => <Campaign {...props} userType={userType} />} />
+      <PrivateRoute path='/org-campaigns/:id/edit' render={props => <EditCampaign {...props} userType={userType} />} />
     </div>
   );
 }
