@@ -1,9 +1,40 @@
-import React,  {useState} from 'react'
+import React, { useState } from 'react'
+import axios from 'axios'
 
-function SupporterLogin() {
+const initialUser = {
+    username: '',
+    password: ''
+}
+
+function SupporterLogin(props) {
+    const [user, setUser] = useState(initialUser)
+
+    const handleChanges = e => {
+        setUser({
+            ...user,
+            [e.target.name] : e.target.value
+        })
+    }
+
+    const handleSubmit = e => {
+        e.preventDefault()
+        axios.post('BACKEND ADDRESS ENDPOINT HERE', user)
+        .then(res => {
+            console.log(res)
+            setUser(initialUser)
+            props.history.push('/supporter-landing')
+        })
+        .catch(err => console.log(err))
+    }
+
     return (
         <div>
-            <h1>This is SupporterLogin</h1>
+            <form>
+            <label htmlFor='username' name='username'>Username: 
+                <input name='username' htmlFor='username' type='text' onChange={handleChanges} /></label>
+                <label htmlFor='password' name='password'>Username: 
+                <input name='password' htmlFor='password' type='password' onChange={handleChanges} /></label>
+            </form>
         </div>
     )
 }

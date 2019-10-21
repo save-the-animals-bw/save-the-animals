@@ -3,6 +3,8 @@ import './App.css';
 import { Route, Link } from 'react-router-dom'
 import PrivateRoute from './utils/PrivateRoute'
 
+import NavBar from './components/NavBar'
+
 // PUBLIC ROUTE IMPORTS
 import Landing from './components/Landing'
 import Register from './components/Register'
@@ -25,7 +27,8 @@ import EditCampaign from './components/Organizations/EditCampaign'
 function App() {
   return (
     <div className="App">
-      <Route path='/' component={Landing} />
+      <NavBar />
+      <Route exact path='/' component={Landing} />
       <Route path='/register' component={Register} />
       <Route path='/org-login' component={OrgLogin} />
       <Route path='/supporter-login' component={SupporterLogin} />
