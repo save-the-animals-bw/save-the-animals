@@ -1,0 +1,40 @@
+.card-container{
+    border: 1px solid lightgray;
+    width: 400px;
+    height: 200px;
+    overflow: hidden;
+}
+
+.card-content{
+    align-content: center;
+}
+
+.card-content h1, .card-content p{
+    z-index: 2;
+    text-align: center;
+}
+
+.card-container img{
+    position: relative;
+    opacity: 0.6;
+    z-index: -1;
+    height: 300px;
+    width: 500px;
+}
+
+.funding{
+    height: 25px;
+    color: white;
+}
+
+.low-funding{
+    background-color: red;
+}
+
+.mid-funding{
+    background-color:yellow;
+}
+
+.high-funding{
+    background-color: green;
+}

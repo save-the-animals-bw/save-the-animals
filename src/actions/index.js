@@ -4,10 +4,13 @@ import axios from 'axios'
 export const SET_USER = 'SET_USER'
 export const GET_CAMPAIGNS = 'GET_CAMPAIGNS'
 export const GET_ORGS = 'GET_ORGS'
+export const LOG_OUT = 'LOG_OUT' 
 
 
-
-
+export const logout = () => dispatch => {
+    localStorage.clear()
+    dispatch({type:LOG_OUT})
+}
 
 export const getUser = () => dispatch => {
    dispatch({type: SET_USER, payload: JSON.parse(localStorage.getItem('user'))})

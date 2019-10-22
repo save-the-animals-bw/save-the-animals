@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import OrgCampaignCard from '../OrgCampaignCard'
 
 import { getCampaignsForOrganizations, getUser } from "../../actions";
 
@@ -14,10 +15,7 @@ function OrgLanding(props) {
     return (
       <div>
         {props.campaigns.campaigns.map(item => (
-          <div key={item.campaigns_id}>
-            <h1>{item.title}</h1>
-            <h1>{item.species}</h1>
-          </div>
+          <OrgCampaignCard {...props} item={item} key={item.campaigns_id} />
         ))}
       </div>
     );

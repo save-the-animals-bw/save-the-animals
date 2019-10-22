@@ -1,4 +1,4 @@
-import { SET_USER, GET_CAMPAIGNS, GET_ORGS } from "../actions"
+import { SET_USER, GET_CAMPAIGNS, GET_ORGS, LOG_OUT } from "../actions"
 
 
 
@@ -10,6 +10,11 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
     switch(action.type){
+        case LOG_OUT:
+            return{
+                ...state,
+                user: '',
+            }
         case GET_ORGS:
             return{
                 ...state,

@@ -31,10 +31,10 @@ function AddCampaign(props) {
 
     const handleChanges = e => {
         let value = e.target.value
-        if (e.target.name === 'urgency'){
+        if (e.target.name === 'urgency' || e.target.name === 'funding_received'){
             setCampaign({
                 ...campaign,
-                urgency: parseInt(value, 10)
+                [e.target.name]: parseInt(value, 10)
             })
         } else {
         setCampaign({
@@ -45,6 +45,7 @@ function AddCampaign(props) {
     }
 
     const handleSubmit = e => {
+        console.log(campaign)
         e.preventDefault()
         axiosWithAuth()
         .post('https://saving-the-animals.herokuapp.com/api/campaigns', campaign)
@@ -60,6 +61,7 @@ function AddCampaign(props) {
                <label htmlFor='location'>Location: <input name='location' type='text' onChange={handleChanges} /></label>
                <label htmlFor='species'>Species: <input name='species' type='text' onChange={handleChanges}/></label>
                <label htmlFor='urgency'>Urgency: <input name='urgency' type='range' min='0' max='10' defaultValue='5' onChange={handleChanges}/></label>
+               <label htmlFor='funding_received'>Funding Received: <input name='funding_received' type='text' onChange={handleChanges} /></label>
                <label htmlFor='image_url'>Image URL: <input name='image_url' type='text' onChange={handleChanges}/></label>
                <div>
             <label htmlFor='organization_id'>Select your organization: <br /></label>
