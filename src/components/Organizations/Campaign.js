@@ -1,11 +1,46 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
-function Campaign() {
+import OrgCampaignCard from '../OrgCampaignCard'
+
+import { getUser, getCampaignsForOrganizations, editItem } from '../../actions'
+import { connect } from 'react-redux'
+
+function Campaign(props) {
+    console.log('campaign props', props)
+    useEffect(() => {
+        props.getUser()
+        props.getCampaignsForOrganizations()
+    }, [])
+
+    
+    const item = props.campaigns.length !== 0 ? props.campaigns.campaigns.find(campaign => `${campaign.campaigns_id}` === props.match.params.id) : false
+    
+
+    if(item === false){
+        return (
+            <div>
+                <h1>Loading Campaign...</h1>
+            </div>
+        )
+    } else {
     return (
         <div>
-            <h1>This is Campaign</h1>
+           <OrgCampaignCard {...props} item={item} />
+           <button onClick={(e) => {
+               props.editItem(e, item)
+               props.history.push(`/org-campaigns/${item.campaigns_id}/edit`)
+           }}>Edit Campaign</button>
         </div>
     )
+    }
 }
 
-export default Campaign
+const mapStateToProps = state => {
+    return {
+        user: state.user,
+        campaigns: state.campaigns
+    }
+}
+
+export default connect(mapStateToProps, { getUser, getCampaignsForOrganizations, editItem })(Campaign)

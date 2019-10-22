@@ -29,10 +29,10 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      <Route exact path='/' component={Landing} userType={userType} />
-      <Route path='/register' component={Register} userType={userType} />
-      <Route path='/org-login' render={props => <OrgLogin {...props} setUserType={setUserType} />} />
-      <Route path='/supporter-login' render={props => <SupporterLogin {...props} setUserType={setUserType} />} />
+      <Route exact path='/' component={Landing}  />
+      <Route path='/register' component={Register}  />
+      <Route path='/org-login' render={props => <OrgLogin {...props} />} />
+      <Route path='/supporter-login' render={props => <SupporterLogin {...props} />} />
       {/* SUPPORTER PRIVATE ROUTES */}
       <PrivateRoute exact path='/supporter-campaigns' component={SupporterLanding} />
       <PrivateRoute path='/supporter-campaigns/:id' component={SupportCampaign} />
@@ -40,7 +40,7 @@ function App() {
       {/* ORGANIZATION PRIVATE ROUTES*/}
       <PrivateRoute exact path='/org-campaigns' component={OrgLanding} />
       <PrivateRoute path='/add-campaign' component={AddCampaign} />
-      <PrivateRoute path='/org-campaigns/:id' component={Campaign} />
+      <PrivateRoute exact path='/org-campaigns/:id' component={Campaign} />
       <PrivateRoute path='/org-campaigns/:id/edit' component={EditCampaign} />
     </div>
   );

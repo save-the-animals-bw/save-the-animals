@@ -1,0 +1,49 @@
+.card-container{
+    border: 1px solid lightgray;
+    box-shadow: 5px 5px 5px gray;
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    margin: 10px;
+}
+
+.card-content p{
+    margin: 0 auto;
+}
+
+.card-content h1, .card-content p{
+    width: 90%;
+}
+
+.card-container img{
+    object-fit: cover;
+    position: relative;
+    opacity: 0.6;
+    height: 100px;
+    width: 300px;
+}
+
+.funding{
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 20px;
+    height: 25px;
+    color: white;
+}
+
+.funding p{
+    margin: 0;
+}
+
+.low-funding{
+    background-color: red;
+}
+
+.mid-funding{
+    background-color:yellow;
+}
+
+.high-funding{
+    background-color: green;
+}

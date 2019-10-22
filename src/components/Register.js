@@ -2,22 +2,22 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios'
 import '../css/Register.css'
 
+import { connect } from 'react-redux'
+import { getOrgs } from '../actions'
+
 const initialUser = {
     username: '',
     password: '',
     email: '',
     userType: '',
+    organization_id: 1,
 }
 
 const Register = (props) => {
   const [user, setUser] = useState(initialUser);
-  const [orgList, setOrgList] = useState([])
 
   useEffect(() => {
-    axios
-    .get('https://saving-the-animals.herokuapp.com/api/organizations')
-    .then(res => setOrgList(res.data))
-    .catch(err => console.log(err))
+    props.getOrgs()
   }, [])
 
   const handleChanges = e => {
@@ -31,7 +31,7 @@ const Register = (props) => {
       e.preventDefault()
       console.log(user)
       axios
-      .post('https://saving-the-animals.herokuapp.com/api/auth/register', user.userType === 'organization' ? {...user, organization_id: Date.now()} : user)
+      .post('https://saving-the-animals.herokuapp.com/api/auth/register', user)
       .then(res => {
           {user.userType === 'organization' ? props.history.push('/org-login') : props.history.push('/supporter-login')}
       })
@@ -68,7 +68,7 @@ const Register = (props) => {
             <div>
             <label htmlFor='organization_id'>Select your organization: <br /></label>
               <select name='organization_id' onChange={handleChanges}>
-                {orgList.map(item => <option key={item.id} value={item.id}>{item.organ_name}</option>)}
+                {props.orgList.map(item => <option key={item.id} value={item.id} onChange={handleChanges}>{item.organ_name}</option>)}
               </select>
             </div>
           )}
@@ -79,4 +79,10 @@ const Register = (props) => {
   );
 };
 
-export default Register;
+const mapStateToProps = state => {
+  return{
+    orgList: state.orgList
+  }
+}
+
+export default connect(mapStateToProps, { getOrgs })(Register);
