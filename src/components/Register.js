@@ -31,7 +31,7 @@ const Register = (props) => {
       e.preventDefault()
       console.log(user)
       axios
-      .post('https://saving-the-animals.herokuapp.com/api/auth/register', user.userType === 'organization' ? {...user, organization_id: Date.now()} : user)
+      .post('https://saving-the-animals.herokuapp.com/api/auth/register', user)
       .then(res => {
           {user.userType === 'organization' ? props.history.push('/org-login') : props.history.push('/supporter-login')}
       })

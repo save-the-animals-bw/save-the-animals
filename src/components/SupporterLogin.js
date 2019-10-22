@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import "../css/Form.css";
+import { connect } from 'react-redux'
+
+import { declareUser } from '../actions'
 
 const initialUser = {
     username: '',
@@ -21,8 +24,7 @@ function SupporterLogin(props) {
         e.preventDefault()
         axios.post('https://saving-the-animals.herokuapp.com/api/auth/login', user)
         .then(res => {
-            console.log(res)
-            setUser(initialUser)
+            props.declareUser(res.data)
             localStorage.setItem('token', res.data.token)
             props.history.push('/supporter-campaigns')
         })
@@ -59,4 +61,10 @@ function SupporterLogin(props) {
     );
 }
 
-export default SupporterLogin
+const mapStateToProps = state => {
+    return {
+        state:state
+    }
+  }
+  
+  export default connect(mapStateToProps, { declareUser })(SupporterLogin);
