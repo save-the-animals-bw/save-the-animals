@@ -3,7 +3,7 @@ import { SET_USER, GET_CAMPAIGNS } from "../actions"
 
 
 const initialState = {
-    user: {},
+    user: '',
     campaigns: [],
 }
 
@@ -20,7 +20,7 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 campaigns: action.payload
             }
-            
+
         default:
             return state
     }

@@ -1,6 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
-function Campaign() {
+import { getUser } from '../../actions'
+import { connect } from 'react-redux'
+
+function Campaign(props) {
+
+    useEffect(() => {
+        props.getUser()
+    }, [])
+
     return (
         <div>
             <h1>This is Campaign</h1>
@@ -8,4 +16,11 @@ function Campaign() {
     )
 }
 
-export default Campaign
+const mapStateToProps = state => {
+    return {
+        user: state.user,
+        campaigns: state.campaigns
+    }
+}
+
+export default connect(mapStateToProps, { getUser })(Campaign)

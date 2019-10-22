@@ -5,8 +5,10 @@ export const GET_CAMPAIGNS = 'GET_CAMPAIGNS'
 
 
 
-export const declareUser = user => dispatch => {
-    dispatch({type: SET_USER, payload: user})
+
+
+export const getUser = () => dispatch => {
+   dispatch({type: SET_USER, payload: JSON.parse(localStorage.getItem('user'))})
 }
 
 export const getCampaignsForOrganizations = () => dispatch => {

@@ -7,6 +7,7 @@ const initialUser = {
     password: '',
     email: '',
     userType: '',
+    organization_id: 1,
 }
 
 const Register = (props) => {
@@ -68,7 +69,7 @@ const Register = (props) => {
             <div>
             <label htmlFor='organization_id'>Select your organization: <br /></label>
               <select name='organization_id' onChange={handleChanges}>
-                {orgList.map(item => <option key={item.id} value={item.id}>{item.organ_name}</option>)}
+                {orgList.map(item => <option key={item.id} value={item.id} onChange={handleChanges}>{item.organ_name}</option>)}
               </select>
             </div>
           )}

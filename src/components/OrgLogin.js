@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "../css/Form.css";
 import { connect } from 'react-redux'
-import { declareUser } from '../actions'
+
 
 const initialUser = {
   username: "",
@@ -11,7 +11,6 @@ const initialUser = {
 
 function OrgLogin(props) {
   const [user, setUser] = useState(initialUser);
-  console.log(props);
 
   const handleChanges = e => {
     setUser({
@@ -22,12 +21,13 @@ function OrgLogin(props) {
 
   const handleSubmit = e => {
     e.preventDefault();
+    console.log('user being submitted', user)
     axios
       .post("https://saving-the-animals.herokuapp.com/api/auth/login", user)
       .then(res => {
-        props.declareUser(res.data)
+        localStorage.setItem('user', JSON.stringify(res.data))
         localStorage.setItem("token", res.data.token);
-        props.history.push("/org-landing");
+        props.history.push("/org-campaigns");
       })
       .catch(err => console.log(err));
   };
@@ -64,8 +64,8 @@ function OrgLogin(props) {
 
 const mapStateToProps = state => {
   return {
-    state: state
+    user: state.user,
   }
 }
 
-export default connect(mapStateToProps, { declareUser })(OrgLogin);
+export default connect(mapStateToProps, {})(OrgLogin);
