@@ -40,7 +40,7 @@ function App() {
       {/* ORGANIZATION PRIVATE ROUTES*/}
       <PrivateRoute exact path='/org-campaigns' component={OrgLanding} />
       <PrivateRoute path='/add-campaign' component={AddCampaign} />
-      <PrivateRoute path='/org-campaigns/:id' component={Campaign} />
+      <PrivateRoute exact path='/org-campaigns/:id' component={Campaign} />
       <PrivateRoute path='/org-campaigns/:id/edit' component={EditCampaign} />
     </div>
   );

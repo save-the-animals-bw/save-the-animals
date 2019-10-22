@@ -13,7 +13,7 @@ function OrgLanding(props) {
 
   if (props.campaigns.length !== 0) {
     return (
-      <div>
+      <div className='org-campaigns'>
         {props.campaigns.campaigns.map(item => (
           <OrgCampaignCard {...props} item={item} key={item.campaigns_id} />
         ))}

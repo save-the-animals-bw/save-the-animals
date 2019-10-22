@@ -5,6 +5,7 @@ export const SET_USER = 'SET_USER'
 export const GET_CAMPAIGNS = 'GET_CAMPAIGNS'
 export const GET_ORGS = 'GET_ORGS'
 export const LOG_OUT = 'LOG_OUT' 
+export const EDIT_ITEM = 'EDIT_ITEM'
 
 
 export const logout = () => dispatch => {
@@ -35,6 +36,11 @@ export const getCampaignsForOrganizations = () => dispatch => {
     .catch(err => {
         console.log('Error Fetching Data', err)
     })
+}
+
+export const editItem = (e, item) => dispatch => {
+    e.preventDefault()
+    dispatch({type:EDIT_ITEM, payload: item})
 }
 
 export const getCampaignsForSupporters = () => dispatch =>{

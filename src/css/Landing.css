@@ -46,6 +46,12 @@
     width: 80%;
 }
 
+.org-campaigns{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
 
 @media all and (max-width: 1000px) {
     .landing-container::after{
