@@ -1,16 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import axiosWithAuth from '../../utils/axiosWithAuth'
+import { getCampaignsForSupporters, getUser } from '../../actions'
+import { connect } from 'react-redux'
 
 function SupporterLanding(props) {
     console.log(props)
-    const [campaigns, setCampaigns] = useState([])
     useEffect(() => {
-        axiosWithAuth()
-        .get('https://saving-the-animals.herokuapp.com/api/campaigns/supporters')
-        .then(res => {
-            console.log(res)
-        })
-        .catch(err => console.log('error fetching data', err))
+        props.getCampaignsForSupporters();
+        props.getUser();
     }, [])
     return (
         <div>
@@ -19,4 +16,11 @@ function SupporterLanding(props) {
     )
 }
 
-export default SupporterLanding
+const mapStateToProps = state => {
+    return {
+        user: state.user,
+        campaigns: state.campaigns
+    }
+}
+
+export default connect(mapStateToProps, { getCampaignsForSupporters, getUser })(SupporterLanding)

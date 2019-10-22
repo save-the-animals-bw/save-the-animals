@@ -1,16 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 
-import { getUser } from '../../actions'
+import { getUser, getOrgs } from '../../actions'
 import axiosWithAuth from '../../utils/axiosWithAuth'
 
 
 
 function AddCampaign(props) {
-
-    useEffect(() => {
-        props.getUser()
-    }, [])
 
     const initialCampaign = {
         title: '',
@@ -18,9 +14,20 @@ function AddCampaign(props) {
         species: '',
         urgency: 5,
         image_url: '',
-        organization_id: parseInt(props.user.organ_id, 10),
+        organization_id: 1,
     }
+
     const [campaign, setCampaign] = useState(initialCampaign)
+
+    useEffect(() => {
+        props.getUser()
+        props.getOrgs()
+    }, [])
+
+    const id = parseInt(props.user.organ_id, 10)
+    console.log(id)
+   
+    
 
     const handleChanges = e => {
         let value = e.target.value
@@ -38,6 +45,7 @@ function AddCampaign(props) {
     }
 
     const handleSubmit = e => {
+        e.preventDefault()
         axiosWithAuth()
         .post('https://saving-the-animals.herokuapp.com/api/campaigns', campaign)
         .then(res => console.log(res))
@@ -52,7 +60,13 @@ function AddCampaign(props) {
                <label htmlFor='location'>Location: <input name='location' type='text' onChange={handleChanges} /></label>
                <label htmlFor='species'>Species: <input name='species' type='text' onChange={handleChanges}/></label>
                <label htmlFor='urgency'>Urgency: <input name='urgency' type='range' min='0' max='10' defaultValue='5' onChange={handleChanges}/></label>
-               <label htmlFor='image'>Image URL: <input name='image' type='text' onChange={handleChanges}/></label>
+               <label htmlFor='image_url'>Image URL: <input name='image_url' type='text' onChange={handleChanges}/></label>
+               <div>
+            <label htmlFor='organization_id'>Select your organization: <br /></label>
+              <select name='organization_id' onChange={handleChanges}>
+                {props.orgList.map(item => <option key={item.id} value={item.id} onChange={handleChanges}>{item.organ_name}</option>)}
+              </select>
+            </div>
                <button type="submit">Add Campaign</button>
            </form>
         </div>
@@ -61,8 +75,9 @@ function AddCampaign(props) {
 
 const mapStateToProps = state => {
     return {
-        user: state.user
+        user: state.user,
+        orgList: state.orgList
     }
   }
   
-  export default connect(mapStateToProps, { getUser })(AddCampaign);
+  export default connect(mapStateToProps, { getUser, getOrgs })(AddCampaign);
