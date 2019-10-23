@@ -10,6 +10,7 @@ const initialUser = {
 };
 
 function OrgLogin(props) {
+  // HANDLE STATE FOR FORM SUBMIT
   const [user, setUser] = useState(initialUser);
 
   const handleChanges = e => {

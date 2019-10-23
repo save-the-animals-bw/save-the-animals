@@ -7,16 +7,19 @@ import { getUser, getCampaignsForOrganizations, editItem } from '../../actions'
 import { connect } from 'react-redux'
 
 function Campaign(props) {
-    console.log('campaign props', props)
     useEffect(() => {
+
+        // GET USER DATA FROM LOCAL STORAGE
         props.getUser()
+
+        // AXIOS CALL TO GET CAMPAIGNS FOR ORGANIZATIONS
         props.getCampaignsForOrganizations()
     }, [])
 
-    
+    // FIND THE INDIVIDUAL CAMPAIGN THAT WAS CLICKED ON. NEED TO WAIT FOR PROPS.CAMPAIGNS FIRST.
     const item = props.campaigns.length !== 0 ? props.campaigns.campaigns.find(campaign => `${campaign.campaigns_id}` === props.match.params.id) : false
     
-
+    // DON'T TRY TO RENDER UNTIL WE HAVE OUR ITEM
     if(item === false){
         return (
             <div>

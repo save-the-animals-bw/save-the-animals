@@ -9,6 +9,7 @@ const initialUser = {
 }
 
 function SupporterLogin(props) {
+    // HANDLE STATE FOR FORM SUBMIT
     const [user, setUser] = useState(initialUser)
 
     const handleChanges = e => {

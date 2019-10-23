@@ -5,10 +5,8 @@ import { connect } from 'react-redux'
 import { getUser, logout } from '../actions'
 
 function NavBar(props) {
-  useEffect(() => {
-    getUser()
-  }, [props.user])
 
+  // DIFFERENT NAV BAR BASED ON WHETHER LOGGED IN, LOGGED IN AS A SUPPORTER, LOGGED IN AS ORG
   if (props.user.userType === 'support'){
     return(
       <div className="nav-bar">

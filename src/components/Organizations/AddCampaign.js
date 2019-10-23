@@ -17,9 +17,12 @@ function AddCampaign(props) {
         organization_id: 1,
     }
 
+    // HANDLE FORM CHANGES IN LOCAL STATE
     const [campaign, setCampaign] = useState(initialCampaign)
 
     useEffect(() => {
+
+        //
         props.getUser()
         props.getOrgs()
     }, [])

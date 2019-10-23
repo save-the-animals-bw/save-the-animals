@@ -10,13 +10,14 @@ const initialUser = {
     password: '',
     email: '',
     userType: '',
-    organization_id: 1,
 }
 
 const Register = (props) => {
+  // MANAGING LOCAL STATE FOR THE FORM INPUTS
   const [user, setUser] = useState(initialUser);
 
   useEffect(() => {
+    // THIS HOOK GETS A LIST OF ORGS FOR THE DROPDOWN MENU
     props.getOrgs()
   }, [])
 
@@ -29,7 +30,6 @@ const Register = (props) => {
 
   const handleSubmit = e => {
       e.preventDefault()
-      console.log(user)
       axios
       .post('https://saving-the-animals.herokuapp.com/api/auth/register', user)
       .then(res => {
@@ -68,6 +68,7 @@ const Register = (props) => {
             <div>
             <label htmlFor='organization_id'>Select your organization: <br /></label>
               <select name='organization_id' onChange={handleChanges}>
+              <option key={0} value={0} onChange={handleChanges}>Please Select An Organization</option>
                 {props.orgList.map(item => <option key={item.id} value={item.id} onChange={handleChanges}>{item.organ_name}</option>)}
               </select>
             </div>

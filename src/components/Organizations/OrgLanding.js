@@ -5,13 +5,17 @@ import OrgCampaignCard from '../OrgCampaignCard'
 import { getCampaignsForOrganizations, getUser } from "../../actions";
 
 function OrgLanding(props) {
-  console.log(props);
+
+  
   useEffect(() => {
+    //GET USER INFO FROM LOCAL STORAGE AND GET LIST OF CAMPAIGNS
     props.getUser()
+
+    // ENDPOINT IS DIFFERENT FROM SUPPORTER CAMPAIGNS
     props.getCampaignsForOrganizations();
   }, []);
 
-  if (props.campaigns.length !== 0) {
+  if (props.campaigns || props.campaigns === true) {
     return (
       <div className='org-campaigns'>
         {props.campaigns.campaigns.map(item => (

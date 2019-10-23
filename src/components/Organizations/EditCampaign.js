@@ -12,10 +12,12 @@ function EditCampaign(props) {
         image_url: ''
     }
 
+    // HANDLE LOCAL STATE FOR FORM
     const [campaign, setCampaign] = useState(initialItem)
-    console.log(props)
+  
 
     useEffect(() => {
+        // GET USER DATA FROM LOCAL STORAGE
         props.getUser()
     }, [])
 

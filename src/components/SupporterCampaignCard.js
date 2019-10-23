@@ -2,11 +2,13 @@ import React from 'react'
 import '../css/CampaignCard.css'
 
 export default function CampaignCard(props) {
+
+    // CLICK ON CARD TO VIEW INDIVIDUAL CAMPAIGN
     const routeToCampaign = (e, item) => {
         e.preventDefault()
         props.history.push(`/org-campaigns/${item}`)
     }
-    console.log('props for campaign card', props);
+
     return (
         <div className="card-container" key={props.item.campaigns_id} onClick={e => routeToCampaign(e, props.item.campaigns_id)}>
             <div className="card-content">
