@@ -1,0 +1,26 @@
+.sup-campaigns{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+}
+
+label{
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+input{
+    width: 200px;
+    height: 20px;
+    margin: 0 auto;
+}
+
+h2{
+    margin-bottom: 0px;
+}
+
+.sup-campaign-cards{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}

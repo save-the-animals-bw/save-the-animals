@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
+
 import OrgCampaignCard from "../OrgCampaignCard";
 
 import { getCampaignsForOrganizations, getUser } from "../../actions";
 
 function OrgLanding(props) {
-  console.log(props);
 
   useEffect(() => {
     //GET USER INFO FROM LOCAL STORAGE AND GET LIST OF CAMPAIGNS

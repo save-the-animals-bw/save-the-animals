@@ -37,7 +37,6 @@ function EditCampaign(props) {
     }
 
     const handleSubmit = e => {
-        console.log(campaign)
         e.preventDefault()
         axiosWithAuth()
         .put(`https://saving-the-animals.herokuapp.com/api/campaigns/${props.item.campaigns_id}`, campaign)

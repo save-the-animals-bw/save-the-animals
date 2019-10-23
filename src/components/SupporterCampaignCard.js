@@ -2,12 +2,17 @@ import React from 'react'
 import '../css/CampaignCard.css'
 
 export default function SupporterCampaignCard(props) {
-    console.log(props)
+
     // CLICK ON CARD TO VIEW INDIVIDUAL CAMPAIGN
     const routeToCampaign = (e, item) => {
         e.preventDefault()
         props.history.push(`/supporter-campaigns/${item}`)
     }
+
+    // FORMATS CURRENCY TO DOLLAR AMOUNT WITH COMMAS
+    function formatCurrency(n, currency) {
+        return currency + n.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+      }
 
     return (
         <div className="card-container" key={props.item.id} onClick={e => routeToCampaign(e, props.item.id)}>
@@ -17,7 +22,7 @@ export default function SupporterCampaignCard(props) {
                 <p>You're helping {props.item.organization_id} save the {props.item.species}</p>
                 <p>Location: {props.item.location}</p>
                 <div className={props.item.funding_received < 1000 ? 'funding low-funding' : props.item.funding_received < 5000 ? 'funding mid-funding' : 'funding high-funding'} style={props.item.funding_received < 2000 ? {width: '50px'} : {width:`${props.item.funding_received/25}px`}}>
-                <p>{props.item.funding_received}</p>
+                <p>{formatCurrency(props.item.funding_received, '$')}</p>
                 </div>
             </div>
 

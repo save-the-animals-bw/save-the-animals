@@ -21,9 +21,6 @@ function NavBar(props) {
         <NavLink className="nav-link" to="/supporter-campaigns">
           Campaigns
         </NavLink>
-        <NavLink className="nav-link" to="/donate">
-          Donate
-        </NavLink>
         <a href="#" className='logout' onClick={() => props.logout()}>Log Out</a>
       </div>
     </div>

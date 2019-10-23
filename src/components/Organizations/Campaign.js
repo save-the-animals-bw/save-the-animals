@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react'
-import { Link } from 'react-router-dom'
 
 import OrgCampaignCard from '../OrgCampaignCard'
 
 import { getUser, getCampaignsForOrganizations, editItem, handleDelete } from '../../actions'
 import { connect } from 'react-redux'
-import axiosWithAuth from '../../utils/axiosWithAuth'
+
 
 function Campaign(props) {
     useEffect(() => {

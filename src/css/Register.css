@@ -58,6 +58,14 @@ Form button{
     margin-top: 5px;
 }
 
+Form button:active{
+    background-color: rgb(180, 153, 0);
+}
+
+Form button:focus{
+    outline: none;
+}
+
 Form label{
     color: #f5f5f5;
 }

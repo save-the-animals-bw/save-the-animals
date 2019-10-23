@@ -20,7 +20,6 @@ export default function CampaignCard(props) {
                 <p>{props.item.funding_received}</p>
                 </div>
             </div>
-
         </div>
     )
 }

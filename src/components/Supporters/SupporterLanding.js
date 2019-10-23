@@ -25,32 +25,36 @@ function SupporterLanding(props) {
       return (
         <div className="sup-campaigns">
           <label htmlFor="search">
-            Search Campaigns: 
+            <h2>Search Campaigns:</h2>
             <input type="text" name="search" onChange={e => props.handleSearch(e)} />
           </label>
-          {filtered.map(item => (
-            <SupporterCampaignCard
-              {...props}
-              item={item}
-              key={item.campaigns_id}
-            />
-          ))}
+          <div className='sup-campaign-cards'>
+            {filtered.map(item => (
+              <SupporterCampaignCard
+                {...props}
+                item={item}
+                key={item.campaigns_id}
+              />
+            ))}
+          </div>
         </div>
       ); 
           } else {
             return (
               <div className="sup-campaigns">
                 <label htmlFor="search">
-                  Search Campaigns
+                  <h2>Search Campaigns:</h2>
                   <input type="text" name="search" onChange={e => props.handleSearch(e)} />
                 </label>
-                {props.campaigns.map(item => (
-                  <SupporterCampaignCard
-                    {...props}
-                    item={item}
-                    key={item.campaigns_id}
-                  />
-                ))}
+                <div className='sup-campaign-cards'>
+                  {props.campaigns.map(item => (
+                    <SupporterCampaignCard
+                      {...props}
+                      item={item}
+                      key={item.campaigns_id}
+                    />
+                  ))}
+                </div>
               </div>
             ); 
           }

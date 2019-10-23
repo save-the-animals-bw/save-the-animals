@@ -1,7 +1,7 @@
 import axiosWithAuth from "../utils/axiosWithAuth"
 import axios from 'axios'
 
-
+// ACTION TYPES
 export const SET_USER = 'SET_USER'
 export const GET_CAMPAIGNS = 'GET_CAMPAIGNS'
 export const GET_ORGS = 'GET_ORGS'
@@ -12,6 +12,10 @@ export const SEARCH = 'SEARCH'
 export const DONATE_CAMPAIGN = 'DONATE_CAMPAIGN'
 
 
+
+// ACTION FUNCTIONS
+/******************USER FUNCTIONS*******************/ 
+// LOGOUT USER
 export const logout = () => dispatch => {
     localStorage.clear()
     dispatch({type:LOG_OUT})
@@ -22,6 +26,9 @@ export const getUser = () => dispatch => {
    dispatch({type: SET_USER, payload: JSON.parse(localStorage.getItem('user'))})
 }
 
+
+
+/*************************AXIOS CALLS*******************************/
 
 // GET LIST OF ORGANIZATIONS WITH AXIOS CALL
 export const getOrgs = () => dispatch => {
@@ -46,12 +53,6 @@ export const getCampaignsForOrganizations = () => dispatch => {
     })
 }
 
-//HOLDS STATE FOR ITEM WHILE LOADING NEW PAGE AND SENDS STATE TO NEW PAGE
-export const editItem = (e, item) => dispatch => {
-    e.preventDefault()
-    dispatch({type:EDIT_ITEM, payload: item})
-}
-
 //AXIOS CALL TO GET CAMPAIGNS FOR SUPPORTERS. WILL SHOW ALL CAMPAIGNS REGARDLESS OF ORGANIZATION
 export const getCampaignsForSupporters = () => dispatch =>{
     axiosWithAuth()
@@ -61,7 +62,6 @@ export const getCampaignsForSupporters = () => dispatch =>{
     })
     .catch(err => console.log('error fetching data', err))
 }
-
 
 // HANDLE DELETION OF CAMPAIGN
 export const handleDelete = (e, item) => dispatch => {
@@ -75,13 +75,24 @@ export const handleDelete = (e, item) => dispatch => {
     .catch(err => console.log('Error Deleting Item', err))
 }
 
+
+
+/***********************UTILITIES*****************************/
+
+//HOLDS STATE FOR ITEM WHILE LOADING NEW PAGE AND SENDS STATE TO NEW PAGE
+export const editItem = (e, item) => dispatch => {
+    e.preventDefault()
+    dispatch({type:EDIT_ITEM, payload: item})
+}
+
+
 // HOLDS SEARCH VALUE 
 export const handleSearch = (e) => dispatch => {
     e.preventDefault()
     dispatch({type:SEARCH, payload: e.target.value})
 }
 
-//HANDLE DONATION TO COMPAIGN
+//HOLDS STATE OF ITEM WHILE DONATING
 export const handleDonate = (e, item) => dispatch => {
     e.preventDefault()
     dispatch({type:DONATE_CAMPAIGN, payload:item})

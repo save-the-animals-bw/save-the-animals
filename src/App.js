@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
-import { Route, Link } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import PrivateRoute from './utils/PrivateRoute'
 
 import NavBar from './components/NavBar'
@@ -15,7 +15,7 @@ import SupporterLogin from './components/SupporterLogin'
 import SupportCampaign from './components/Supporters/SupportCampaign'
 import SupporterLanding from './components/Supporters/SupporterLanding'
 import Donate from './components/Supporters/Donate'
-import Thanks from './components/Supporters/Thanks'
+
 
 //ORGANIZATION IMPORTS
 import OrgLanding from './components/Organizations/OrgLanding'
@@ -25,7 +25,6 @@ import EditCampaign from './components/Organizations/EditCampaign'
 
 
 function App() {
-  const [userType, setUserType] = useState()
   return (
     <div className="App">
       <NavBar />
