@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom'
 
 import OrgCampaignCard from '../OrgCampaignCard'
 
-import { getUser, getCampaignsForOrganizations, editItem } from '../../actions'
+import { getUser, getCampaignsForOrganizations, editItem, handleDelete } from '../../actions'
 import { connect } from 'react-redux'
+import axiosWithAuth from '../../utils/axiosWithAuth'
 
 function Campaign(props) {
     useEffect(() => {
@@ -17,7 +18,7 @@ function Campaign(props) {
     }, [])
 
     // FIND THE INDIVIDUAL CAMPAIGN THAT WAS CLICKED ON. NEED TO WAIT FOR PROPS.CAMPAIGNS FIRST.
-    const item = props.campaigns.length !== 0 ? props.campaigns.campaigns.find(campaign => `${campaign.campaigns_id}` === props.match.params.id) : false
+    const item = props.campaigns.length !== 0 && props.campaigns !== null ? props.campaigns.campaigns.find(campaign => `${campaign.campaigns_id}` === props.match.params.id) : false
     
     // DON'T TRY TO RENDER UNTIL WE HAVE OUR ITEM
     if(item === false){
@@ -34,6 +35,10 @@ function Campaign(props) {
                props.editItem(e, item)
                props.history.push(`/org-campaigns/${item.campaigns_id}/edit`)
            }}>Edit Campaign</button>
+           <button onClick={e => {
+               props.handleDelete(e, item)
+               props.history.push('/org-campaigns')
+           }}>Delete Campaign</button>
         </div>
     )
     }
@@ -46,4 +51,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { getUser, getCampaignsForOrganizations, editItem })(Campaign)
+export default connect(mapStateToProps, { getUser, getCampaignsForOrganizations, editItem, handleDelete })(Campaign)

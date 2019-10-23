@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import { getUser, getOrgs } from '../../actions'
+
 import axiosWithAuth from '../../utils/axiosWithAuth'
 
 
@@ -22,8 +23,10 @@ function AddCampaign(props) {
 
     useEffect(() => {
 
-        //
+        //GET USER DATA FROM LOCAL STORAGE
         props.getUser()
+
+        // GET ORGANIZATION LIST FOR FORM SELECTION
         props.getOrgs()
     }, [])
 
@@ -69,6 +72,7 @@ function AddCampaign(props) {
                <div>
             <label htmlFor='organization_id'>Select your organization: <br /></label>
               <select name='organization_id' onChange={handleChanges}>
+              <option key={0} value={0} onChange={handleChanges}>Please Select An Organization</option>
                 {props.orgList.map(item => <option key={item.id} value={item.id} onChange={handleChanges}>{item.organ_name}</option>)}
               </select>
             </div>
