@@ -1,4 +1,4 @@
-import { SET_USER, GET_CAMPAIGNS, GET_ORGS, LOG_OUT, EDIT_ITEM, DELETE_ITEM, SEARCH } from "../actions"
+import { SET_USER, GET_CAMPAIGNS, GET_ORGS, LOG_OUT, EDIT_ITEM, DELETE_ITEM, SEARCH, DONATE_CAMPAIGN } from "../actions"
 
 
 
@@ -8,10 +8,17 @@ const initialState = {
     orgList: [],
     itemToEdit: '',
     search: '',
+    itemToDonate: '',
 }
 
 const rootReducer = (state = initialState, action) => {
     switch(action.type){
+
+        case DONATE_CAMPAIGN:
+            return{
+                ...state,
+                itemToDonate: action.payload
+            }
 
         case SEARCH:
             return{

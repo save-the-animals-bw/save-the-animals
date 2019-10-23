@@ -9,6 +9,7 @@ export const LOG_OUT = 'LOG_OUT'
 export const EDIT_ITEM = 'EDIT_ITEM'
 export const DELETE_ITEM = 'DELETE_ITEM'
 export const SEARCH = 'SEARCH'
+export const DONATE_CAMPAIGN = 'DONATE_CAMPAIGN'
 
 
 export const logout = () => dispatch => {
@@ -74,9 +75,16 @@ export const handleDelete = (e, item) => dispatch => {
     .catch(err => console.log('Error Deleting Item', err))
 }
 
+// HOLDS SEARCH VALUE 
 export const handleSearch = (e) => dispatch => {
     e.preventDefault()
     dispatch({type:SEARCH, payload: e.target.value})
+}
+
+//HANDLE DONATION TO COMPAIGN
+export const handleDonate = (e, item) => dispatch => {
+    e.preventDefault()
+    dispatch({type:DONATE_CAMPAIGN, payload:item})
 }
 
 

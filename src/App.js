@@ -35,7 +35,7 @@ function App() {
       <Route path='/supporter-login' render={props => <SupporterLogin {...props} />} />
       {/* SUPPORTER PRIVATE ROUTES */}
       <PrivateRoute exact path='/supporter-campaigns' component={SupporterLanding} />
-      <PrivateRoute path='/supporter-campaigns/:id' component={SupportCampaign} />
+      <PrivateRoute exact path='/supporter-campaigns/:id' component={SupportCampaign} />
       <PrivateRoute path='/supporter-campaigns/:id/donate' component={Donate}  />
       {/* ORGANIZATION PRIVATE ROUTES*/}
       <PrivateRoute exact path='/org-campaigns' component={OrgLanding} />

@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import { getCampaignsForSupporters, getUser, handleSearch } from "../../actions";
 import SupporterCampaignCard from "../SupporterCampaignCard";
+import '../../css/LoginLanding.css'
 
 function SupporterLanding(props) {
 
@@ -13,6 +14,7 @@ function SupporterLanding(props) {
     props.getUser();
   }, []);
 
+  // MAPPING THROUGH THIS INSTEAD OF DIRECTLY THROUGH PROPS.CAMPAIGN
   const filtered = props.campaigns.filter(item =>
     item.title.toLowerCase().includes(props.search.toLowerCase()) ||
     item.species.toLowerCase().includes(props.search.toLowerCase()) ||
