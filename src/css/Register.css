@@ -58,12 +58,31 @@ Form button{
     margin-top: 5px;
 }
 
+Form button:active{
+    background-color: rgb(180, 153, 0);
+}
+
+Form button:focus{
+    outline: none;
+    cursor: progress;
+}
+
 Form label{
     color: #f5f5f5;
 }
 
 Form input{
     margin: 4%;
+}
+.type-org, .type-sup{
+    display: flex;
+    justify-content: center;
+    margin: 4%;
+}
+
+.type-org input, .type-sup input{
+    margin: 0;
+    width: 40px;
 }
 
 @media all and (max-width: 1000px) {

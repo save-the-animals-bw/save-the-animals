@@ -1,11 +1,50 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { connect } from 'react-redux'
+import axiosWithAuth from '../../utils/axiosWithAuth'
+import '../../css/Campaign.css'
 
-function Donate() {
+function Donate(props) {
+    console.log('donate props', props)
+    const initialItem = {
+        ...props.item
+    }
+    const [donation, setDonation] = useState(initialItem)
+
+    const handleChanges = e => {
+        let value = e.target.value
+        setDonation({
+            ...donation,
+            funding_received: props.item.funding_received + parseInt(e.target.value, 10)
+        })
+    }
+
+    const handleSubmit = e => {
+        e.preventDefault()
+        console.log(donation)
+        axiosWithAuth()
+        .put(`https://saving-the-animals.herokuapp.com/api/campaigns/${props.item.id}`, donation)
+        .then(res => {
+            console.log(res)
+            props.history.push('/supporter-campaigns')
+        })
+        .catch(err => console.log(err))
+    }
+
     return (
-        <div>
-            <h1>This is Donate</h1>
+        <div className='campaign-focus-container'>
+            <form onSubmit={handleSubmit}>
+                <label htmlFor='funding_received'>Amount: $
+                <input type='text' name='funding_received' onChange={handleChanges} /></label>
+                <button type='submit'>Submit Donation</button>
+            </form>
         </div>
     )
 }
 
-export default Donate
+const mapStateToProps = state => {
+    return{
+        item: state.itemToDonate
+    }
+}
+
+export default connect(mapStateToProps, {})(Donate)

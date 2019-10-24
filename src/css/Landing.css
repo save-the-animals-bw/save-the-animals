@@ -46,7 +46,7 @@
     width: 80%;
 }
 
-.org-campaigns{
+.org-campaigns, .sup-campaigns{
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
