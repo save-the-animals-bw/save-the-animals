@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import axiosWithAuth from '../../utils/axiosWithAuth'
+import '../../css/Campaign.css'
 
 function Donate(props) {
     console.log('donate props', props)
@@ -30,7 +31,7 @@ function Donate(props) {
     }
 
     return (
-        <div>
+        <div className='campaign-focus-container'>
             <form onSubmit={handleSubmit}>
                 <label htmlFor='funding_received'>Amount: $
                 <input type='text' name='funding_received' onChange={handleChanges} /></label>

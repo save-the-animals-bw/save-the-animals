@@ -9,7 +9,11 @@ function EditCampaign(props) {
     const initialItem = {
         organization_id: parseInt(props.user.organ_id, 10),
         id: props.item.campaigns_id,
-        image_url: ''
+        image_url: props.item.image_url,
+        title: props.item.title,
+        urgency: props.item.urgency,
+        species: props.item.species,
+        funding_received: props.item.funding_received,
     }
 
     // HANDLE LOCAL STATE FOR FORM
@@ -48,8 +52,8 @@ function EditCampaign(props) {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
-            <h1>Add A Campaign</h1>
+            <form onSubmit={handleSubmit} id='org-edit-campaign'>
+            <h1>Edit Campaign</h1>
                <label htmlFor='title'>Title: <input name='title' type='text' defaultValue={props.item.title} onChange={handleChanges} /></label>
                <label htmlFor='location'>Location: <input name='location' type='text' defaultValue={props.item.location} onChange={handleChanges} /></label>
                <label htmlFor='species'>Species: <input name='species' type='text' defaultValue={props.item.species} onChange={handleChanges}/></label>

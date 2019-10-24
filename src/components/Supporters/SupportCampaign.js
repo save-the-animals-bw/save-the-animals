@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { handleDonate } from '../../actions'
 
 import SupporterCampaignCard from '../SupporterCampaignCard'
+import '../../css/Campaign.css'
 
 function SupportCampaign(props) {
   const item = props.campaigns
@@ -24,7 +25,7 @@ function SupportCampaign(props) {
     );
   } else {
     return (
-      <div>
+      <div className='campaign-focus-container'>
         <SupporterCampaignCard {...props} item={item} />
         <button onClick={e => {
           routeToDonate(e, item)

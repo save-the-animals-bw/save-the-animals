@@ -55,13 +55,17 @@ const Register = (props) => {
             Email
             <input type='text' name='email' onChange={handleChanges} />
           </label>
-          <div>
+          <div className='type-selector'>
             <label htmlFor="userType">
               Are you an Organization or a Supporter?<br />
-              <input type="radio" name="userType" value="organization" onChange={handleChanges}/>
-              Organization
-              <input type="radio" name="userType" value="support" onChange={handleChanges} />
-              Supporter
+              <div className='type-org'>
+                <input type="radio" name="userType" value="organization" id='org' onChange={handleChanges}/>
+                <label for='org'>Organization</label>
+              </div>
+              <div className='type-sup'>
+                <input type="radio" name="userType" value="support" id='sup' onChange={handleChanges} />
+                <label for='sup'>Supporter</label>
+              </div>
             </label>
           </div>
           {user.userType === 'organization' && (

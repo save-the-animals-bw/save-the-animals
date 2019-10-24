@@ -5,6 +5,8 @@ import OrgCampaignCard from '../OrgCampaignCard'
 import { getUser, getCampaignsForOrganizations, editItem, handleDelete } from '../../actions'
 import { connect } from 'react-redux'
 
+import '../../css/Campaign.css'
+
 
 function Campaign(props) {
     useEffect(() => {
@@ -28,7 +30,7 @@ function Campaign(props) {
         )
     } else {
     return (
-        <div>
+        <div className='campaign-focus-container'>
            <OrgCampaignCard {...props} item={item} />
            <button onClick={(e) => {
                props.editItem(e, item)

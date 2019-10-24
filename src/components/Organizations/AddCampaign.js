@@ -54,7 +54,7 @@ function AddCampaign(props) {
   };
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} id='org-add-campaign'>
         <h1>Add A Campaign</h1>
         <label htmlFor="title">
           Title: <input name="title" type="text" onChange={handleChanges} />

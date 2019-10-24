@@ -1,7 +1,62 @@
 .sup-campaigns{
+    background-attachment: fixed;
+}
+
+.sup-campaigns::after{
+    content:'';
+    background: url("../images/parrot.jpg") no-repeat;
+    background-size: cover;
+    opacity: 0.8;
+    position:fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    z-index: -1;
+    height: 100vh;
+}
+
+.search-form{
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: column nowrap;
     justify-content: center;
+    position: absolute;
+    margin: 0 auto;
+    margin-top: 60px;
+}
+
+.sup-campaign-content{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    margin: 0 auto;
+}
+
+.sup-campaign-cards{
+    position:relative;
+    z-index: 2;
+    width: 80vw;
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.sup-campaign-cards::after{
+    content: "";
+    background: url("#") black;
+    opacity: 0.8;
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    z-index: -1;
+    border-radius: 5px;
 }
 
 label{
@@ -19,8 +74,7 @@ h2{
     margin-bottom: 0px;
 }
 
-.sup-campaign-cards{
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
+p{
+    color: white;
 }
+

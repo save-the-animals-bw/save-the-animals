@@ -9,6 +9,11 @@ export default function CampaignCard(props) {
         props.history.push(`/org-campaigns/${item}`)
     }
 
+     // FORMATS CURRENCY TO DOLLAR AMOUNT WITH COMMAS
+     function formatCurrency(n, currency) {
+        return currency + n.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+      }
+
     return (
         <div className="card-container" key={props.item.campaigns_id} onClick={e => routeToCampaign(e, props.item.campaigns_id)}>
             <div className="card-content">
@@ -17,7 +22,7 @@ export default function CampaignCard(props) {
                 <p>Help {props.item.organ_name} save the {props.item.species}.</p>
                 <p>Location: {props.item.location}</p>
                 <div className={props.item.funding_received < 1000 ? 'funding low-funding' : props.item.funding_received < 5000 ? 'funding mid-funding' : 'funding high-funding'} style={props.item.funding_received < 2000 ? {width: '50px'} : {width:`${props.item.funding_received/25}px`}}>
-                <p>{props.item.funding_received}</p>
+                <p>{formatCurrency(props.item.funding_received, '$')}</p>
                 </div>
             </div>
         </div>
