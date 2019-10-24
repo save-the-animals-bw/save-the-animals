@@ -11,8 +11,7 @@ import "../../css/LoginLanding.css";
 
 function SupporterLanding(props) {
 
-  const [isLoading, setIsLoading] = useState(false)
-  
+  const [isLoading, setIsLoading] = useState(true)
   useEffect(() => {
     props.getUser()
     // LOADING
@@ -30,15 +29,15 @@ function SupporterLanding(props) {
   
 
   // MAPPING THROUGH THIS INSTEAD OF DIRECTLY THROUGH PROPS.CAMPAIGN
-  const filtered = props.campaigns.filter(
-    item =>
-      item.title.toLowerCase().includes(props.search.toLowerCase()) ||
-      item.species.toLowerCase().includes(props.search.toLowerCase()) ||
-      item.location.toLowerCase().includes(props.search.toLowerCase())
-  );
-
-  if (!isLoading) {
+ 
+  if (!isLoading && isLoading === false) {
     if (props.search) {
+      const filtered = props.campaigns.filter(
+        item =>
+          item.title.toLowerCase().includes(props.search.toLowerCase()) ||
+          item.species.toLowerCase().includes(props.search.toLowerCase()) ||
+          item.location.toLowerCase().includes(props.search.toLowerCase())
+      );
       return (
         <div className="sup-campaigns">
           <div className="search-form">

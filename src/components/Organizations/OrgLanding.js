@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
 import OrgCampaignCard from "../OrgCampaignCard";
+import '../../css/OrgCampaigns.css'
 
 import { getCampaignsForOrganizations, getUser } from "../../actions";
 
