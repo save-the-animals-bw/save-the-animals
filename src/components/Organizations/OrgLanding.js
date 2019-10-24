@@ -17,6 +17,9 @@ function OrgLanding(props) {
 
   return (
     <div className="org-campaigns">
+    <div className='org-campaign-content'>
+    <h2>Your Active Campaigns</h2>
+      <div className='org-campaign-cards'>
       {props.campaigns && props.campaigns.campaigns ? (
         props.campaigns.campaigns.map(item => (
           <OrgCampaignCard {...props} item={item} key={item.campaigns_id} />
@@ -25,7 +28,7 @@ function OrgLanding(props) {
         <div>
           <h1>You have no active campaigns...</h1>
         </div>
-      )}
+      )}</div></div>
     </div>
   );
 }
